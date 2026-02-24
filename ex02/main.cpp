@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 17:02:30 by rorollin          #+#    #+#             */
-/*   Updated: 2026/02/24 17:11:33 by rorollin         ###   ########.fr       */
+/*   Updated: 2026/02/24 18:58:01 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main( void )
 	Fixed const d( b );
 	a = Fixed( 1234.4321f );
 
-	std::cout << "a is " << a << std::endl;
+	std::cout << "a*b is " << a*b << std::endl;
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;
 	std::cout << "d is " << d << std::endl;

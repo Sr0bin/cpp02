@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 17:02:12 by rorollin          #+#    #+#             */
-/*   Updated: 2026/02/24 18:52:49 by rorollin         ###   ########.fr       */
+/*   Updated: 2026/02/24 19:08:21 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ Fixed	Fixed::operator+(const Fixed &fix) const
 		temp.setRawBits(std::numeric_limits<int>::max());
 		return (temp);
 	}
-	if (result > std::numeric_limits<int>::min())
+	if (result < std::numeric_limits<int>::min())
 	{
 		Fixed temp;
 		temp.setRawBits(std::numeric_limits<int>::min());
@@ -73,10 +73,84 @@ Fixed	Fixed::operator+(const Fixed &fix) const
 	return (temp);
 }
 
-Fixed	Fixed::operator-(const Fixed &fix) const;
-Fixed	Fixed::operator*(const Fixed &fix) const;
-Fixed	Fixed::operator/(const Fixed &fix) const;
+Fixed	Fixed::operator-(const Fixed &fix) const
+{
+	long long result;
 
+	result = this->getRawBits() - fix.getRawBits();
+	if (result > std::numeric_limits<int>::max())
+	{
+		Fixed temp;
+		temp.setRawBits(std::numeric_limits<int>::max());
+		return (temp);
+	}
+	if (result < std::numeric_limits<int>::min())
+	{
+		Fixed temp;
+		temp.setRawBits(std::numeric_limits<int>::min());
+		return (temp);
+	}
+	Fixed temp;
+	temp.setRawBits(static_cast<int>(result));
+	return (temp);
+}
+Fixed	Fixed::operator*(const Fixed &fix) const
+{
+	long long result;
+
+	result = (this->getRawBits() * fix.getRawBits()) >> _bpf;
+	if (result > std::numeric_limits<int>::max())
+	{
+		Fixed temp;
+		temp.setRawBits(std::numeric_limits<int>::max());
+		return (temp);
+	}
+	if (result < std::numeric_limits<int>::min())
+	{
+		Fixed temp;
+		temp.setRawBits(std::numeric_limits<int>::min());
+		return (temp);
+	}
+	Fixed temp;
+	temp.setRawBits(static_cast<int>(result));
+	return (temp);
+}
+
+Fixed	Fixed::operator/(const Fixed &fix) const
+{
+	long long result;
+
+	result = (this->getRawBits() / fix.getRawBits()) << _bpf;
+	if (result > std::numeric_limits<int>::max())
+	{
+		Fixed temp;
+		temp.setRawBits(std::numeric_limits<int>::max());
+		return (temp);
+	}
+	if (result < std::numeric_limits<int>::min())
+	{
+		Fixed temp;
+		temp.setRawBits(std::numeric_limits<int>::min());
+		return (temp);
+	}
+	Fixed temp;
+	temp.setRawBits(static_cast<int>(result));
+	return (temp);
+}
+
+Fixed	Fixed::operator++()
+{
+	++_value;
+	return (*this);
+}
+Fixed	Fixed::operator--();
+Fixed	Fixed::operator++(int)
+{
+	Fixed	temp(*this);
+	++(*this);
+	return (temp);
+}
+Fixed	Fixed::operator--(int);
 Fixed::Fixed() : _value(0) 
 {
 	std::cout << "Default Constructor called\n";
