@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 17:02:12 by rorollin          #+#    #+#             */
-/*   Updated: 2026/02/24 17:10:26 by rorollin         ###   ########.fr       */
+/*   Updated: 2026/02/25 15:49:10 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ float	Fixed::toFloat(void) const
 
 int	Fixed::toInt(void) const
 {
-	return (getRawBits() / (1 << _bpf));
+	return (getRawBits() >> _bpf);
 }
 
 std::ostream	&operator<<(std::ostream &os, const Fixed &Fixed)
