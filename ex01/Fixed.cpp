@@ -6,14 +6,13 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 17:02:12 by rorollin          #+#    #+#             */
-/*   Updated: 2026/02/25 15:49:10 by rorollin         ###   ########.fr       */
+/*   Updated: 2026/02/25 15:59:15 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <cmath>
 #include <iostream>
-#include <limits>
 
 const int Fixed::_bpf = 8;
 
@@ -60,6 +59,7 @@ std::ostream	&operator<<(std::ostream &os, const Fixed &Fixed)
 {
 	return (os << Fixed.toFloat());
 }
+
 Fixed &Fixed::operator=(const Fixed &fix)
 {
 	std::cout << "Copy Assignement operator called\n";

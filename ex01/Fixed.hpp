@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 17:02:02 by rorollin          #+#    #+#             */
-/*   Updated: 2026/02/24 17:08:01 by rorollin         ###   ########.fr       */
+/*   Updated: 2026/02/25 16:03:55 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ public:
 };
 
 std::ostream	&operator<<(std::ostream &os, const Fixed &fixed);
-#endif
 
+#endif
